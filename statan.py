@@ -114,7 +114,7 @@ class Static:
 
     def dependencies(self):
         try:
-            output = subprocess.check_output(["ldd", self.file])
+            output = subprocess.check_output(["objdump", "-p", self.file, "| grep NEEDED"])
             return output
         except:
             pass
